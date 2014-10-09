@@ -1,5 +1,5 @@
-# mozen
-מאזן - Mozen a library for balancing work
+# Mozen
+מאזן - Mozen a library for balancing the distribution of work
 
 =======================
 
