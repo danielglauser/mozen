@@ -9,12 +9,16 @@
 (defn slice [{:keys [slice-fn] :as job}]
   (slice-fn job))
 
-(defn process [job]
-;; TODO: Can we do this without a count-fn?
+(defn process
+  "Work through the entire job. Size matters."
+  [job]
   (let [count-fn (:count-fn job)
         size (count-fn (:data job))]
-    (take (+ size 1) (iterate slice job))))
+    (take size (iterate slice job))))
 
-(def job {:data [1 2 3 4 5 6 7 8 9 10]
-          :slice-fn (partial slicer first (comp vec rest))
-          :count-fn count})
+(defn process
+  "Work through the entire job."
+  [job]
+  (let [count-fn (:count-fn job)
+        size (count-fn (:data job))]
+    (take size (iterate slice job))))
