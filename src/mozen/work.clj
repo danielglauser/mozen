@@ -10,13 +10,6 @@
   (slice-fn job))
 
 (defn process
-  "Work through the entire job. Size matters."
-  [job]
-  (let [count-fn (:count-fn job)
-        size (count-fn (:data job))]
-    (take size (iterate slice job))))
-
-(defn process
   "Work through the entire job."
   [job]
   (let [count-fn (:count-fn job)
